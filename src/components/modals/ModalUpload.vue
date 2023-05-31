@@ -77,6 +77,9 @@ const postData = inject('postData');
 
 onMounted(() => {
   uploader.value = new plupload.Uploader({
+    required_features: {
+      send_browser_cookies: true
+    },
     runtimes: 'html5',
     browse_button: pickFiles.value,
     container: container.value,

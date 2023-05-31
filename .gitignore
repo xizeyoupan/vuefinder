@@ -4,6 +4,7 @@
 /vendor
 /storage
 /.idea
+/dist
 composer.json
 composer.lock
 mix-manifest.json

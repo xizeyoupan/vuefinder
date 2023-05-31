@@ -10,7 +10,7 @@
   </div>
 
   <div class="w-full flex justify-center">
-    <img ref="image" class="max-w-[50vh] max-h-[50vh]" :src="getImageUrl(props.selection.adapter, props.selection.item.path)" alt="">
+    <img crossorigin="use-credentials" ref="image" class="max-w-[50vh] max-h-[50vh]" :src="getImageUrl(props.selection.adapter, props.selection.item.path)" alt="">
   </div>
 
   <message v-if="message.length" @hidden="message=''" :error="isError">{{ message }}</message>
@@ -78,7 +78,7 @@ const crop = () => {
             })
                 .then(data => {
                   message.value = t('Updated.');
-                  image.value.src = getImageUrl(props.selection.adapter, props.selection.item.path);
+                  image.value.src = getImageUrl(props.selection.adapter, props.selection.item.path) + "&v=" + Math.random();
                   editMode();
                   emit('load');
                 })
