@@ -76,10 +76,7 @@ const handleUpload = () => {
 const postData = inject('postData');
 
 onMounted(() => {
-  uploader.value = new plupload.Uploader({
-    required_features: {
-      send_browser_cookies: true
-    },
+  const option={
     runtimes: 'html5',
     browse_button: pickFiles.value,
     container: container.value,
@@ -132,7 +129,11 @@ onMounted(() => {
         }
       }
     }
-  });
+  }
+
+  if(import.meta.env.VITE_APP_MODE === "development") option.required_features= {send_browser_cookies: true};
+
+  uploader.value = new plupload.Uploader(option);
 
   uploader.value.init();
 });

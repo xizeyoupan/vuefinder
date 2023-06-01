@@ -1,8 +1,9 @@
 export const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 
 export default (url, {method = 'get', params = {}, json = true, signal = null}) => {
-    const init = {method: method,credentials: 'include'};
-    
+    const init = {method: method};
+
+    if (import.meta.env.VITE_APP_MODE === "development") init.credentials= 'include';
     init.signal = signal;
 
     if (method == 'get') {
